@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kayra Şener — Certificates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f2ec;
+      --ink: #1a1814;
+      --ink-muted: #6b6660;
+      --accent: #c8401a;
+      --accent-light: #f0d9d2;
+      --border: #d8d3cb;
+      --card-bg: #faf8f4;
+      --tag-data: #1a4a6b;
+      --tag-data-bg: #ddeaf5;
+      --tag-ai: #2d5a3d;
+      --tag-ai-bg: #d6ead9;
+      --tag-comm: #6b3a1a;
+      --tag-comm-bg: #f5e6d8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NOISE TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 72px 5vw 56px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 24px;
+    }
+
+    .header-left {}
+
+    .header-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .header-sub {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      max-width: 460px;
+      font-weight: 300;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .contact-line {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      line-height: 2;
+    }
+
+    .contact-line a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .contact-line a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ── MAIN ── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 5vw 96px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-count {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── GRID ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2px;
+    }
+
+    /* ── CARD ── */
+    .cert-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 32px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .cert-card:hover {
+      background: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(26, 24, 20, 0.08);
+      z-index: 2;
+    }
+
+    .cert-card:hover::after {
+      width: 100%;
+    }
+
+    /* Card index number */
+    .card-index {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--border);
+      letter-spacing: 0.1em;
+      position: absolute;
+      top: 20px;
+      right: 24px;
+    }
+
+    .card-issuer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .issuer-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .logo-coursera {
+      background: #0056d3;
+      color: #fff;
+    }
+
+    .logo-datacamp {
+      background: #03ef62;
+      color: #1a1814;
+    }
+
+    .issuer-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .tag-data    { background: var(--tag-data-bg);  color: var(--tag-data); }
+    .tag-ai      { background: var(--tag-ai-bg);    color: var(--tag-ai); }
+    .tag-comm    { background: var(--tag-comm-bg);  color: var(--tag-comm); }
+
+    .card-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .card-arrow {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--border);
+      letter-spacing: 0.1em;
+      font-family: 'DM Mono', monospace;
+      transition: color 0.2s, letter-spacing 0.2s;
+    }
+
+    .cert-card:hover .card-arrow {
+      color: var(--accent);
+      letter-spacing: 0.2em;
+    }
+
+    /* ── CV SECTION ── */
+    .cv-section {
+      margin-top: 72px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .cv-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 36px 40px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cv-card:hover {
+      background: var(--accent);
+    }
+
+    .cv-left {}
+
+    .cv-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 8px;
+    }
+
+    .cv-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .cv-sub {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-top: 6px;
+    }
+
+    .cv-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid rgba(245, 242, 236, 0.3);
+      padding: 12px 24px;
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+
+    .cv-card:hover .cv-cta {
+      border-color: rgba(245, 242, 236, 0.8);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 24px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header { animation: fadeUp 0.6s ease both; }
+
+    .cert-card:nth-child(1) { animation: fadeUp 0.5s 0.15s ease both; }
+    .cert-card:nth-child(2) { animation: fadeUp 0.5s 0.22s ease both; }
+    .cert-card:nth-child(3) { animation: fadeUp 0.5s 0.29s ease both; }
+    .cert-card:nth-child(4) { animation: fadeUp 0.5s 0.36s ease both; }
+    .cert-card:nth-child(5) { animation: fadeUp 0.5s 0.43s ease both; }
+    .cv-card { animation: fadeUp 0.5s 0.5s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header {
+        grid-template-columns: 1fr;
+        padding: 48px 5vw 40px;
+      }
+      .header-right { text-align: left; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .cv-card { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <p class="header-eyebrow">Certificate Repository</p>
+      <h1>Kayra <em>Şener</em></h1>
+      <p class="header-sub">Industrial Engineering · Boğaziçi University · Istanbul, Turkey</p>
+    </div>
+    <div class="header-right">
+      <p class="contact-line"><a href="mailto:kayrasener34@gmail.com">kayrasener34@gmail.com</a></p>
+      <p class="contact-line">+90 507 576 74 06</p>
+      <p class="contact-line">
+        <a href="https://www.linkedin.com/in/kayrasener/" target="_blank" rel="noopener">LinkedIn</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/kayrasenerr" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="section-header">
+      <h2 class="section-title">Certifications</h2>
+      <span class="section-count">05 documents</span>
+    </div>
+
+    <div class="cert-grid">
+
+      <!-- 1. Effective Speaking -->
+      <a
+        class="cert-card"
+        href="effective_speaking.pdf"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="card-index">01</span>
+        <div class="card-issuer">
+          <div class="issuer-logo logo-coursera">CO</div>
+          <span class="issuer-name">Koç University · Coursera</span>
+        </div>
+        <div class="card-title">Etkili Konuşma<br/>Effective Speaking</div>
+        <div class="card-meta">
+          <span class="card-tag tag-comm">Communication</span>
+          <span class="card-date">Dec 2020</span>
+        </div>
+        <div class="card-arrow">view pdf →</div>
+      </a>
+
+      <!-- 2. Intro to SQL -->
+      <a
+        class="cert-card"
+        href="indtroduction_to_sql.pdf"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="card-index">02</span>
+        <div class="card-issuer">
+          <div class="issuer-logo logo-datacamp">DC</div>
+          <span class="issuer-name">DataCamp</span>
+        </div>
+        <div class="card-title">Introduction<br/>to SQL</div>
+        <div class="card-meta">
+          <span class="card-tag tag-data">Data</span>
+          <span class="card-date">Jul 2024</span>
+        </div>
+        <div class="card-arrow">view pdf →</div>
+      </a>
+
+      <!-- 3. Intermediate SQL -->
+      <a
+        class="cert-card"
+        href="intermediate_sql.pdf"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="card-index">03</span>
+        <div class="card-issuer">
+          <div class="issuer-logo logo-datacamp">DC</div>
+          <span class="issuer-name">DataCamp</span>
+        </div>
+        <div class="card-title">Intermediate<br/>SQL</div>
+        <div class="card-meta">
+          <span class="card-tag tag-data">Data</span>
+          <span class="card-date">Jul 2024</span>
+        </div>
+        <div class="card-arrow">view pdf →</div>
+      </a>
+
+      <!-- 4. Understanding ChatGPT -->
+      <a
+        class="cert-card"
+        href="understanding_chatgpt.pdf"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="card-index">04</span>
+        <div class="card-issuer">
+          <div class="issuer-logo logo-datacamp">DC</div>
+          <span class="issuer-name">DataCamp</span>
+        </div>
+        <div class="card-title">Understanding<br/>ChatGPT</div>
+        <div class="card-meta">
+          <span class="card-tag tag-ai">AI</span>
+          <span class="card-date">Jul 2024</span>
+        </div>
+        <div class="card-arrow">view pdf →</div>
+      </a>
+
+      <!-- 5. Web Scraping in Python -->
+      <a
+        class="cert-card"
+        href="webscraping_with_python.pdf"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="card-index">05</span>
+        <div class="card-issuer">
+          <div class="issuer-logo logo-datacamp">DC</div>
+          <span class="issuer-name">DataCamp</span>
+        </div>
+        <div class="card-title">Web Scraping<br/>in Python</div>
+        <div class="card-meta">
+          <span class="card-tag tag-data">Data</span>
+          <span class="card-date">Jul 2024</span>
+        </div>
+        <div class="card-arrow">view pdf →</div>
+      </a>
+
+    </div>
+
+    <!-- CV -->
+    <div class="cv-section">
+      <div class="section-header">
+        <h2 class="section-title">Curriculum Vitae</h2>
+      </div>
+      <a class="cv-card" href="CV_KAYRA_SENER.pdf" target="_blank" rel="noopener">
+        <div class="cv-left">
+          <p class="cv-eyebrow">Full resume</p>
+          <p class="cv-name">Kayra Şener — CV</p>
+          <p class="cv-sub">Data & Optimization · Software · Operations · Design</p>
+        </div>
+        <div class="cv-cta">Download PDF →</div>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <span class="footer-note">© 202 Kayra Şener</span>
+    <span class="footer-note">Istanbul, Turkey · kayrasener34@gmail.com</span>
+  </footer>
+
+</body>
+</html>
