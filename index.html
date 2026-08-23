@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kayra Şener — Certificates</title>
+  <title>Kayra Şener — CV, Projects & Certificates</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -230,6 +230,11 @@
       color: #1a1814;
     }
 
+    .logo-github {
+      background: #1a1814;
+      color: #fff;
+    }
+
     .issuer-name {
       font-family: 'DM Mono', monospace;
       font-size: 10px;
@@ -244,6 +249,13 @@
       line-height: 1.2;
       letter-spacing: -0.01em;
       flex-grow: 1;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      font-weight: 300;
+      line-height: 1.55;
     }
 
     .card-meta {
@@ -287,11 +299,35 @@
       letter-spacing: 0.2em;
     }
 
+    /* ── PROJECTS NOTE ── */
+    .projects-note {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: var(--card-bg);
+      border: 1px dashed var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px;
+      color: var(--ink-muted);
+      letter-spacing: 0.02em;
+      line-height: 1.7;
+    }
+
+    .projects-note a {
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .projects-note a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
     /* ── CV SECTION ── */
     .cv-section {
-      margin-top: 72px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
+      padding-top: 0;
+      border-top: none;
     }
 
     .cv-card {
@@ -348,6 +384,20 @@
       border-color: rgba(245, 242, 236, 0.8);
     }
 
+    /* ── SECTION SPACING ── */
+    .page-section {
+      margin-top: 72px;
+    }
+
+    .page-section:first-child {
+      margin-top: 0;
+    }
+
+    .page-section + .page-section {
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
     /* ── FOOTER ── */
     footer {
       position: relative;
@@ -376,12 +426,13 @@
 
     header { animation: fadeUp 0.6s ease both; }
 
-    .cert-card:nth-child(1) { animation: fadeUp 0.5s 0.15s ease both; }
-    .cert-card:nth-child(2) { animation: fadeUp 0.5s 0.22s ease both; }
-    .cert-card:nth-child(3) { animation: fadeUp 0.5s 0.29s ease both; }
-    .cert-card:nth-child(4) { animation: fadeUp 0.5s 0.36s ease both; }
-    .cert-card:nth-child(5) { animation: fadeUp 0.5s 0.43s ease both; }
-    .cv-card { animation: fadeUp 0.5s 0.5s ease both; }
+    .cv-card { animation: fadeUp 0.5s 0.1s ease both; }
+
+    .cert-grid .cert-card:nth-child(1) { animation: fadeUp 0.5s 0.15s ease both; }
+    .cert-grid .cert-card:nth-child(2) { animation: fadeUp 0.5s 0.22s ease both; }
+    .cert-grid .cert-card:nth-child(3) { animation: fadeUp 0.5s 0.29s ease both; }
+    .cert-grid .cert-card:nth-child(4) { animation: fadeUp 0.5s 0.36s ease both; }
+    .cert-grid .cert-card:nth-child(5) { animation: fadeUp 0.5s 0.43s ease both; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
@@ -399,7 +450,7 @@
 
   <header>
     <div class="header-left">
-      <p class="header-eyebrow">Certificate Repository</p>
+      <p class="header-eyebrow">Portfolio</p>
       <h1>Kayra <em>Şener</em></h1>
       <p class="header-sub">Industrial Engineering · Boğaziçi University · Istanbul, Turkey</p>
     </div>
@@ -416,117 +467,8 @@
 
   <main>
 
-    <div class="section-header">
-      <h2 class="section-title">Certifications</h2>
-      <span class="section-count">05 documents</span>
-    </div>
-
-    <div class="cert-grid">
-
-      <!-- 1. Effective Speaking -->
-      <a
-        class="cert-card"
-        href="effective_speaking.pdf"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="card-index">01</span>
-        <div class="card-issuer">
-          <div class="issuer-logo logo-coursera">CO</div>
-          <span class="issuer-name">Koç University · Coursera</span>
-        </div>
-        <div class="card-title">Etkili Konuşma<br/>Effective Speaking</div>
-        <div class="card-meta">
-          <span class="card-tag tag-comm">Communication</span>
-          <span class="card-date">Dec 2020</span>
-        </div>
-        <div class="card-arrow">view pdf →</div>
-      </a>
-
-      <!-- 2. Intro to SQL -->
-      <a
-        class="cert-card"
-        href="indtroduction_to_sql.pdf"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="card-index">02</span>
-        <div class="card-issuer">
-          <div class="issuer-logo logo-datacamp">DC</div>
-          <span class="issuer-name">DataCamp</span>
-        </div>
-        <div class="card-title">Introduction<br/>to SQL</div>
-        <div class="card-meta">
-          <span class="card-tag tag-data">Data</span>
-          <span class="card-date">Jul 2024</span>
-        </div>
-        <div class="card-arrow">view pdf →</div>
-      </a>
-
-      <!-- 3. Intermediate SQL -->
-      <a
-        class="cert-card"
-        href="intermediate_sql.pdf"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="card-index">03</span>
-        <div class="card-issuer">
-          <div class="issuer-logo logo-datacamp">DC</div>
-          <span class="issuer-name">DataCamp</span>
-        </div>
-        <div class="card-title">Intermediate<br/>SQL</div>
-        <div class="card-meta">
-          <span class="card-tag tag-data">Data</span>
-          <span class="card-date">Jul 2024</span>
-        </div>
-        <div class="card-arrow">view pdf →</div>
-      </a>
-
-      <!-- 4. Understanding ChatGPT -->
-      <a
-        class="cert-card"
-        href="understanding_chatgpt.pdf"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="card-index">04</span>
-        <div class="card-issuer">
-          <div class="issuer-logo logo-datacamp">DC</div>
-          <span class="issuer-name">DataCamp</span>
-        </div>
-        <div class="card-title">Understanding<br/>ChatGPT</div>
-        <div class="card-meta">
-          <span class="card-tag tag-ai">AI</span>
-          <span class="card-date">Jul 2024</span>
-        </div>
-        <div class="card-arrow">view pdf →</div>
-      </a>
-
-      <!-- 5. Web Scraping in Python -->
-      <a
-        class="cert-card"
-        href="webscraping_with_python.pdf"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="card-index">05</span>
-        <div class="card-issuer">
-          <div class="issuer-logo logo-datacamp">DC</div>
-          <span class="issuer-name">DataCamp</span>
-        </div>
-        <div class="card-title">Web Scraping<br/>in Python</div>
-        <div class="card-meta">
-          <span class="card-tag tag-data">Data</span>
-          <span class="card-date">Jul 2024</span>
-        </div>
-        <div class="card-arrow">view pdf →</div>
-      </a>
-
-    </div>
-
-    <!-- CV -->
-    <div class="cv-section">
+    <!-- CV (moved to top) -->
+    <div class="page-section cv-section">
       <div class="section-header">
         <h2 class="section-title">Curriculum Vitae</h2>
       </div>
@@ -540,10 +482,243 @@
       </a>
     </div>
 
+    <!-- PUBLIC PROJECTS -->
+    <div class="page-section">
+      <div class="section-header">
+        <h2 class="section-title">Public Projects</h2>
+        <span class="section-count">05 repositories</span>
+      </div>
+
+      <div class="cert-grid">
+
+        <!-- 1. coffee_forecast -->
+        <a
+          class="cert-card"
+          href="https://github.com/kayrasenerr/coffee_forecast"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">01</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-github">GH</div>
+            <span class="issuer-name">coffee_forecast</span>
+          </div>
+          <div class="card-title">Regime-Aware Probabilistic Forecasting for Coffee Futures</div>
+          <p class="card-desc">A modular research pipeline that screens 28 exogenous macro, FX, and climate variables through four statistical tests, feeds the survivors into a competing model suite (HMM regime detection, GARCH, SARIMAX, Bayesian regression, ensembles), and validates every result with walk-forward backtesting and permutation significance testing. Includes a Streamlit app for live experimentation.</p>
+          <div class="card-meta">
+            <span class="card-tag tag-data">Quant / Forecasting</span>
+            <span class="card-date">Personal</span>
+          </div>
+          <div class="card-arrow">view repo →</div>
+        </a>
+
+        <!-- 2. grad_project -->
+        <a
+          class="cert-card"
+          href="https://github.com/kayrasenerr/grad_project"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">02</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-github">GH</div>
+            <span class="issuer-name">grad_project</span>
+          </div>
+          <div class="card-title">Pattern-Based Clustering for Dynamic Simulation Output</div>
+          <p class="card-desc">Undergraduate thesis project. Converts raw multivariate simulation trajectories into interpretable behavioral feature vectors (linearity, oscillation, growth/decay signatures) via regression and peak analysis, then applies hierarchical and K-Means clustering to automatically sort simulation runs into a labeled behavioral taxonomy.</p>
+          <div class="card-meta">
+            <span class="card-tag tag-ai">Clustering / ML</span>
+            <span class="card-date">Thesis</span>
+          </div>
+          <div class="card-arrow">view repo →</div>
+        </a>
+
+        <!-- 3. time-series-and-forecasting-project -->
+        <a
+          class="cert-card"
+          href="https://github.com/kayrasenerr/time-series-and-forecasting-project"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">03</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-github">GH</div>
+            <span class="issuer-name">time-series-and-forecasting-project</span>
+          </div>
+          <div class="card-title">Hourly Solar Power Forecasting (Edikli GES)</div>
+          <p class="card-desc">SARIMA-based forecasting system predicting next-day hourly solar power output for a plant in Niğde, Turkey, built and submitted daily during a live class-wide forecasting competition. Hour-independent modeling, seasonal frequency selection, and residual diagnostics via the Ljung-Box test across 24 separate hourly models.</p>
+          <div class="card-meta">
+            <span class="card-tag tag-data">Time Series</span>
+            <span class="card-date">Course Project</span>
+          </div>
+          <div class="card-arrow">view repo →</div>
+        </a>
+
+        <!-- 4. Process-Monitoring-Project -->
+        <a
+          class="cert-card"
+          href="https://github.com/kayrasenerr/Process-Monitoring-Project"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">04</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-github">GH</div>
+            <span class="issuer-name">Process-Monitoring-Project</span>
+          </div>
+          <div class="card-title">Statistical Process Control on Match Performance Data</div>
+          <p class="card-desc">Applies multivariate statistical process control, including Shewhart and EWMA control charts, to detect shifts and anomalies in team performance metrics over time, translating classical quality-engineering monitoring techniques onto a non-industrial dataset.</p>
+          <div class="card-meta">
+            <span class="card-tag tag-data">SPC / Statistics</span>
+            <span class="card-date">Course Project</span>
+          </div>
+          <div class="card-arrow">view repo →</div>
+        </a>
+
+        <!-- 5. IE588-Project -->
+        <a
+          class="cert-card"
+          href="https://github.com/kayrasenerr/IE588-Project"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">05</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-github">GH</div>
+            <span class="issuer-name">IE588-Project</span>
+          </div>
+          <div class="card-title">Agent-Based Modeling: Large-Scale Factorial Simulation Study</div>
+          <p class="card-desc">A NetLogo agent-based model built with a fully specified conceptual model and formal verification/validation procedure. Ran a 6×8 factorial design (48 policy/scenario combinations × 100 replications = 4,800 simulation runs) and analyzed outcomes with heatmaps and two-sample t-tests to isolate statistically significant parameter effects.</p>
+          <div class="card-meta">
+            <span class="card-tag tag-ai">Simulation / ABM</span>
+            <span class="card-date">Course Project</span>
+          </div>
+          <div class="card-arrow">view repo →</div>
+        </a>
+
+      </div>
+
+      <div class="projects-note">
+        There are many more smaller projects and course assignments in my course repositories on <a href="https://github.com/kayrasenerr?tab=repositories" target="_blank" rel="noopener">GitHub</a>.
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS (moved to bottom) -->
+    <div class="page-section">
+      <div class="section-header">
+        <h2 class="section-title">Certifications</h2>
+        <span class="section-count">05 documents</span>
+      </div>
+
+      <div class="cert-grid">
+
+        <!-- 1. Effective Speaking -->
+        <a
+          class="cert-card"
+          href="effective_speaking.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">01</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-coursera">CO</div>
+            <span class="issuer-name">Koç University · Coursera</span>
+          </div>
+          <div class="card-title">Etkili Konuşma<br/>Effective Speaking</div>
+          <div class="card-meta">
+            <span class="card-tag tag-comm">Communication</span>
+            <span class="card-date">Dec 2020</span>
+          </div>
+          <div class="card-arrow">view pdf →</div>
+        </a>
+
+        <!-- 2. Intro to SQL -->
+        <a
+          class="cert-card"
+          href="indtroduction_to_sql.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">02</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-datacamp">DC</div>
+            <span class="issuer-name">DataCamp</span>
+          </div>
+          <div class="card-title">Introduction<br/>to SQL</div>
+          <div class="card-meta">
+            <span class="card-tag tag-data">Data</span>
+            <span class="card-date">Jul 2024</span>
+          </div>
+          <div class="card-arrow">view pdf →</div>
+        </a>
+
+        <!-- 3. Intermediate SQL -->
+        <a
+          class="cert-card"
+          href="intermediate_sql.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">03</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-datacamp">DC</div>
+            <span class="issuer-name">DataCamp</span>
+          </div>
+          <div class="card-title">Intermediate<br/>SQL</div>
+          <div class="card-meta">
+            <span class="card-tag tag-data">Data</span>
+            <span class="card-date">Jul 2024</span>
+          </div>
+          <div class="card-arrow">view pdf →</div>
+        </a>
+
+        <!-- 4. Understanding ChatGPT -->
+        <a
+          class="cert-card"
+          href="understanding_chatgpt.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">04</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-datacamp">DC</div>
+            <span class="issuer-name">DataCamp</span>
+          </div>
+          <div class="card-title">Understanding<br/>ChatGPT</div>
+          <div class="card-meta">
+            <span class="card-tag tag-ai">AI</span>
+            <span class="card-date">Jul 2024</span>
+          </div>
+          <div class="card-arrow">view pdf →</div>
+        </a>
+
+        <!-- 5. Web Scraping in Python -->
+        <a
+          class="cert-card"
+          href="webscraping_with_python.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card-index">05</span>
+          <div class="card-issuer">
+            <div class="issuer-logo logo-datacamp">DC</div>
+            <span class="issuer-name">DataCamp</span>
+          </div>
+          <div class="card-title">Web Scraping<br/>in Python</div>
+          <div class="card-meta">
+            <span class="card-tag tag-data">Data</span>
+            <span class="card-date">Jul 2024</span>
+          </div>
+          <div class="card-arrow">view pdf →</div>
+        </a>
+
+      </div>
+    </div>
+
   </main>
 
   <footer>
-    <span class="footer-note">© 202 Kayra Şener</span>
+    <span class="footer-note">© 2025 Kayra Şener</span>
     <span class="footer-note">Istanbul, Turkey · kayrasener.mail@gmail.com</span>
   </footer>
 
